@@ -48,7 +48,7 @@ namespace Toggle_Rando_Split_Options
             if (!BindingManager.IsBindingRegistered<DownDash>())
                 BindingManager.RegisterBinding<DownDash>();
 
-            ModHooks.Instance.SavegameLoadHook += CheckForSkills;
+            ModHooks.SavegameLoadHook += CheckForSkills;
         }
 
         private void CheckForSkills(int id)
@@ -155,7 +155,7 @@ namespace Toggle_Rando_Split_Options
         
         public static Direction GetDashDirection(HeroController hc)
         {
-            InputHandler input = ReflectionHelper.GetAttr<HeroController, InputHandler>(hc, "inputHandler");
+            InputHandler input = ReflectionHelper.GetField<HeroController, InputHandler>(hc, "inputHandler");
             if (!hc.cState.onGround && input.inputActions.down.IsPressed && hc.playerData.GetBool("equippedCharm_31")
                 && !(input.inputActions.left.IsPressed || input.inputActions.right.IsPressed))
             {
