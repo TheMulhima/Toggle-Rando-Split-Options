@@ -14,7 +14,7 @@ namespace Toggle_Rando_Split_Options.Split_Claw
         
         protected override void OnApplied()
         {
-            ModHooks.Instance.HeroUpdateHook += Fix_DoubleJump;
+            ModHooks.HeroUpdateHook += Fix_DoubleJump;
             On.HeroController.CanWallSlide += Apply_Binding_Slide;
             On.HeroController.CanWallJump += Apply_Binding_Jump;
             Toggle_Rando_Split_Options.Is_RightClaw_BindingActive = true;
@@ -48,7 +48,7 @@ namespace Toggle_Rando_Split_Options.Split_Claw
         {
             On.HeroController.CanWallSlide -= Apply_Binding_Slide;
             On.HeroController.CanWallJump -= Apply_Binding_Jump;
-            ModHooks.Instance.HeroUpdateHook -= Fix_DoubleJump;
+            ModHooks.HeroUpdateHook -= Fix_DoubleJump;
             Toggle_Rando_Split_Options.Is_RightClaw_BindingActive = false;
             PlayerData.instance.hasWalljump = true;
         }
